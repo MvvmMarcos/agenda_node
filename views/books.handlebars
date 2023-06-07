@@ -1,0 +1,34 @@
+<h1 class="text-center my-3">Livros cadastrado!</h1>
+
+
+    <a href="/" class="btn btn-info my-3 text-white float-end">Cadastrar livros</a>
+
+{{#if books}}
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="row">Id:</th>
+            <th scope="row">Título:</th>
+            <th scope="row">Número de páginas:</th>
+            <th scope="row">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each books}}
+        <tr>
+            <td> {{id}}</td>
+            <td><a href="/book/{{id}}">{{title}}</a></td>
+            <td> {{pageqty}}</td>
+            <td><a href="/books/edit/{{id}}" class="btn btn-warning">Editar</a></td>
+            <td>
+                <form action="/books/remove/{{id}}" method="POST">
+                <input type="submit" value="Deletar" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+    <p>Não há livros cadastrados</p>
+{{/if}}
